@@ -127,33 +127,28 @@ window.TrelloPowerUp.initialize({
         },
           {
             icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
-            text: 'Get various data into console',
+            text: 'Pivot table',
             callback: function (t) {
-                return t.board('all').then(async function (board) {
-                    let labelNames = board.labels.filter(label => { return label.name.trim() });
-                    let listNames = t.lists('all').filter(list => { return list.name.trim() });
-                    let cardObjects = t.cards('all');
+		t.board('all').then(async function (board) {
+               //     let labelNames = board.labels.filter(label => { return label.name.trim() });
+                    let listNames = t.lists('all');
+              /*      let cardObjects = t.cards('all');
                     let memberObjects = board.members;
                     let customFieldObject = board.customFields;
-                    console.log(labelNames);
-                    console.log(listNames);
-                    console.log(cardObjects);
+                    console.log(labelNames); */
+                    console.log(t.lists('all'));
+		    window.listStore=t.lists('all');
+               /*     console.log(cardObjects);
                     console.log(memberObjects);
-                    console.log(customFieldObject);
+                    console.log(customFieldObject);   */
                 });
-            }
-        }  ,
-          {
-            icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
-            text: 'Open modal',
-            callback: function (t) {
                 return t.modal({
 				  url: 'https://conjointly.com/',
 				  args: { text: 'Hello' },
 				  accentColor: '#F2D600',
 				  fullscreen: true,
 				  callback: () => console.log('Goodbye.'),
-				  title: 'appear.in meeting',
+				  title: 'Pivot Table (by Conjoint.ly)',
 
 				}) ;
             }
