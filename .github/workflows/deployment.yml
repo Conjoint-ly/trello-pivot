@@ -22,5 +22,10 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_FIELD_LABEL: ${{ secrets.CUSTOM_FIELD_LABEL }}
+          CUSTOM_FIELD_NAME: ${{ secrets.CUSTOM_FIELD_NAME }}
+          MEMBERS: ${{ secrets.MEMBERS }}
+          LABELS: ${{ secrets.LABELS }}
+          LISTS_RANGE: ${{ secrets.LISTS_RANGE }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: dist # The folder the action should deploy.
