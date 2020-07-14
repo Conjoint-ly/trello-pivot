@@ -4,7 +4,7 @@ This power-up adds pivot table functionality to Trello. It was developed by the 
 
 ## How it works (technically speaking)
 
-We make use of the existing [pivottable](https://github.com/Conjoint-ly/pivottable) library, into which we load card data from the active board via `localStorage`. The fields contain:
+We make use of the existing [pivottable](https://github.com/Conjoint-ly/pivottable) library, into which, via `localStorage`, we load the following card data from the active board:
 
 * Card ID
 * Card Name
