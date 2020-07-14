@@ -109,7 +109,7 @@ window.TrelloPowerUp.initialize({
     'board-buttons': function () {
         return [{
             icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
-            text: 'Calculate total hours',
+            text: 'Tally total hours',
             callback: function (t) {
                 return t.board('all').then(async function (board) {
                     const labels = board.labels.filter(label => {
