@@ -144,11 +144,12 @@ window.TrelloPowerUp.initialize({
                   "Labels": B.labels.map(A => A.name).join(", ")
                 };
                 B.customFieldItems.forEach(function(A) {
-                  customMap[A.idCustomField] = Number(A.value.number)
+                  customMap[board.customFields.filter(B => B.id == A.idCustomField)[0].name] = Number(A.value.number)
                 });
                 return customMap;
               });
             }).flat(1);
+            console.log(window.cardData);
             return t.modal({
               url: 'https://conjointly.com/',
               args: {
