@@ -130,10 +130,11 @@ window.TrelloPowerUp.initialize({
         text: 'Pivot table',
         callback: function(t) {
           t.board('all').then(async function(board) {
-            window.listStore = t.lists('all');
             let customFieldObject = board.customFields;
+            let listStore = await t.lists('all');
+            window.listStore = listStore;
             window.customFieldObjectStore = customFieldObject;
-            window.cardData = t.lists('all')._settledValue.map(function(C) {
+            window.cardData = cardStore._settledValue.map(function(C) {
               return C.cards.map(function(B) {
                 let customMap = {
                   "Card ID": B.id,
