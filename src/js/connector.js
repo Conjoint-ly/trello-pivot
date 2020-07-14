@@ -124,6 +124,24 @@ window.TrelloPowerUp.initialize({
                     showInConsole(members, customField, labels);
                 });
             }
-        }];
+        },
+          {
+            icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
+            text: 'Get various data into console',
+            callback: function (t) {
+                return t.board('all').then(async function (board) {
+                    let labelNames = board.labels.filter(label => { return label.name.trim() });
+                    let listNames = board.lists.filter(list => { return list.name.trim() });
+                    let cardObjects = t.cards('all');
+                    let memberObjects = board.members;
+                    let customFieldObject = board.customFields;
+                    console.log(labelNames);
+                    console.log(listNames);
+                    console.log(cardObjects);
+                    console.log(memberObjects);
+                    console.log(customFieldObject);
+                });
+            }
+        }    ];
     },
 });
