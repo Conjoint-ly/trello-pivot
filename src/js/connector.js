@@ -131,7 +131,7 @@ window.TrelloPowerUp.initialize({
             callback: function (t) {
                 return t.board('all').then(async function (board) {
                     let labelNames = board.labels.filter(label => { return label.name.trim() });
-                    let listNames = board.lists.filter(list => { return list.name.trim() });
+                    let listNames = t.lists('all').filter(list => { return list.name.trim() });
                     let cardObjects = t.cards('all');
                     let memberObjects = board.members;
                     let customFieldObject = board.customFields;
@@ -142,6 +142,22 @@ window.TrelloPowerUp.initialize({
                     console.log(customFieldObject);
                 });
             }
-        }    ];
+        }  ,
+          {
+            icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
+            text: 'Open modal',
+            callback: function (t) {
+                return t.modal({
+				  url: 'https://conjointly.com/',
+				  args: { text: 'Hello' },
+				  accentColor: '#F2D600',
+				  fullscreen: true,
+				  callback: () => console.log('Goodbye.'),
+				  title: 'appear.in meeting',
+
+				}) ;
+            }
+        }    
+		];
     },
 });
