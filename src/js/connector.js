@@ -149,17 +149,16 @@ window.TrelloPowerUp.initialize({
                 return customMap;
               });
             }).flat(1);
-            console.log(window.cardData);
+            localStorage.setItem('cardData', JSON.stringify(window.cardData));
             return t.modal({
               url: 'https://conjointly.com/',
               args: {
-                text: 'Hello'
+                getVar1: 'getVal1'
               },
               accentColor: '#F2D600',
               fullscreen: true,
-              callback: () => console.log('Goodbye.'),
+              callback: () => console.log('Pivot table closed.'),
               title: 'Pivot Table (by Conjoint.ly)',
-
             });
           })
         }
