@@ -109,7 +109,7 @@ window.TrelloPowerUp.initialize({
     'board-buttons': function () {
         return [{
             icon: false,
-            text: 'Console hours',
+            text: 'Calculate total hours',
             callback: function (t) {
                 return t.board('all').then(async function (board) {
                     const labels = board.labels.filter(label => {
