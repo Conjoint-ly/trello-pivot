@@ -108,7 +108,7 @@ const showInConsole = (members, customField, labels) => {
 window.TrelloPowerUp.initialize({
     'board-buttons': function () {
         return [{
-            icon: false,
+            icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
             text: 'Calculate total hours',
             callback: function (t) {
                 return t.board('all').then(async function (board) {
