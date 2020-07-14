@@ -130,19 +130,25 @@ window.TrelloPowerUp.initialize({
             text: 'Pivot table',
             callback: function (t) {
 		t.board('all').then(async function (board) {
-               //     let labelNames = board.labels.filter(label => { return label.name.trim() });
-                    let listNames = t.lists('all');
-              /*      let cardObjects = t.cards('all');
-                    let memberObjects = board.members;
-                    let customFieldObject = board.customFields;
-                    console.log(labelNames); */
-                    console.log(t.lists('all'));
-		    window.listStore=t.lists('all');
-               /*     console.log(cardObjects);
-                    console.log(memberObjects);
-                    console.log(customFieldObject);   */
-                });
-                return t.modal({
+			window.listStore=t.lists('all');
+			let customFieldObject = board.customFields;
+			window.customFieldObjectStore = customFieldObject;
+			window.cardData = t.lists('all')._settledValue.map(function(C){
+				return C.cards.map(function(B){
+					let customMap ={
+						"Card ID": B.id,
+						"Card Name": B.name,
+						"List": C.name,
+						"Members": B.members.map(A => A.fullName).join(", "),
+						"Labels": B.labels.map(A => A.name).join(", ")
+					};
+					B.customFieldItems.forEach(function(A){
+						customMap[A.idCustomField] = Number(A.value.number)
+					});
+					return customMap;
+				});
+			}).flat(1);
+                	return t.modal({
 				  url: 'https://conjointly.com/',
 				  args: { text: 'Hello' },
 				  accentColor: '#F2D600',
@@ -150,9 +156,9 @@ window.TrelloPowerUp.initialize({
 				  callback: () => console.log('Goodbye.'),
 				  title: 'Pivot Table (by Conjoint.ly)',
 
-				}) ;
-            }
-        }    
-		];
+			}) ;
+            		}
+        	}    
+	];
     },
 });
