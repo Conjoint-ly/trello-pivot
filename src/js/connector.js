@@ -151,7 +151,7 @@ window.TrelloPowerUp.initialize({
             }).flat(1);
             localStorage.setItem('cardData', JSON.stringify(window.cardData));
             return t.modal({
-              url: 'https://conjointly.com/',
+              url: 'https://conjoint-ly.github.io/trello-pivot/modal.html',
               args: {
                 getVar1: 'getVal1'
               },
