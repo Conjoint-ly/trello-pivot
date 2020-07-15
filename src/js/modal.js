@@ -1,14 +1,14 @@
 $(window).load(function() {
   if (localStorage.pivotData === undefined) {
-    let pivotData = {
+    var pivotData = {
       rows: ["List"],
       cols: ["Member"],
       aggregatorName: "Count",
       rendererName: "Table"
     };
   } else {
-    let pivotDataRaw  = JSON.parse(localStorage.pivotData);
-    let pivotData = {
+    var pivotDataRaw  = JSON.parse(localStorage.pivotData);
+    var pivotData = {
       rows: pivotDataRaw.rows,
       cols: pivotDataRaw.cols,
       aggregatorName: pivotDataRaw.aggregatorName,
@@ -18,8 +18,8 @@ $(window).load(function() {
   }
   pivotData.onRefresh = function(config) {
     localStorage.setItem("pivotData", JSON.stringify(config));
-    $(".pvtTable").css("width", "");
-    $("table").css("width", "");
+    $(".pvtTable, table").css("width", "auto");
   };
   $("#output").pivotUI(JSON.parse(localStorage.cardData), pivotData);
+  $(".pvtTable, table").css("width", "auto");
 });
