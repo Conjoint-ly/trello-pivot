@@ -1,4 +1,3 @@
-document.write();
 $("#output").pivotUI(
  JSON.parse(localStorage.cardData), {
     rows: ["List"],
