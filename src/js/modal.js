@@ -8,6 +8,7 @@ $(function() {
     };
   } else {
     var pivotData  = JSON.parse(localStorage.pivotData);
+    delete pivotData.aggregators;
     /*var pivotData = {
       rows: pivotDataRaw.rows,
       cols: pivotDataRaw.cols,
