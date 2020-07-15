@@ -98,12 +98,13 @@ window.TrelloPowerUp.initialize({
             let listStore = await t.lists('all');
             window.listStore = listStore;
             window.customFieldObjectStore = customFieldObject;
-            window.cardData = listStore.map(function(C) {
+            window.cardData = listStore.map(function(C, listIndex) {
               return C.cards.map(function(B) {
                 let customMap = {
                   "Card ID": B.id,
                   "Card Name": B.name,
                   "List": C.name,
+                  "List index": listIndex+1,
                   "Members": B.members.map(A => A.fullName).join(", "),
                   "Labels": B.labels.map(A => A.name).join(", ")
                 };
