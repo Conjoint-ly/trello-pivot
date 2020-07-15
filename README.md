@@ -6,6 +6,8 @@ This power-up adds pivot table functionality to Trello. It was developed by the 
 * Tracking costs for projects,
 * Whatever other reason and need breakdowns by custom fields.
 
+## Demo
+
 ![Pivot Table demo](src/html/pivot-table-demo.gif)
 
 ## Benefits
