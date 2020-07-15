@@ -130,7 +130,7 @@ window.TrelloPowerUp.initialize({
               args: {
                 boardID: board.id
               },
-              accentColor: '#FFFFFF',
+              accentColor: '#000000',
               fullscreen: true,
               callback: () => console.log('Pivot table closed.'),
               actions: [{
