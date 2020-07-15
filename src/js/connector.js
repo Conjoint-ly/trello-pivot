@@ -85,25 +85,6 @@ const applyCustomFieldCountForMembers = (members, cards, customField) => {
   return members;
 }
 
-/**
- * Config from .env
- * @type {{members: string[], range: string[], customField: {name: *, label: *}, labels: string[]}}
- */
-const config = {
-  customField: {
-    name: process.env.CUSTOM_FIELD_NAME,
-    label: process.env.CUSTOM_FIELD_LABEL
-  },
-  members: commasToArray(process.env.MEMBERS),
-  labels: commasToArray(process.env.LABELS),
-  range: commasToArray(process.env.LISTS_RANGE)
-};
-
-const showInConsole = (members, customField, labels) => {
-  console.log('For labels: ' + labels.map(label => label.name).join(', '));
-  members.forEach(member => console.log('Member: ' + member.fullName + ' = ' + member[customField.name]));
-};
-
 
 window.TrelloPowerUp.initialize({
   'board-buttons': function() {
