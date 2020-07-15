@@ -14,7 +14,7 @@ $(function() {
   if (localStorage["pivotData" + $_GET["boardID"]] === undefined) {
     var pivotData = {
       rows: ["List"],
-      cols: ["Member"],
+      cols: ["Members"],
       aggregatorName: "Count",
       rendererName: "Table"
     };
