@@ -2,6 +2,8 @@
 
 This power-up adds pivot table functionality to Trello. It was developed by the [Conjoint.ly](https://conjointly.com/) development team as a quick way to count to-do and completed cards, as well as tally total hours budgeted for cards. It is particularly useful if you use Trello for planning development hours or tracking costs for projects.
 
+![Pivot Table demo](src/html/pivot-table-demo.gif)
+
 ## How it works (technically speaking)
 
 We make use of the existing [pivottable](https://github.com/Conjoint-ly/pivottable) library, into which, via `localStorage`, we load the following card data from the active board:
