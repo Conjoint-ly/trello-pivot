@@ -115,7 +115,7 @@ window.TrelloPowerUp.initialize({
             }).flat(1);
             localStorage.setItem('cardData'+ board.id, JSON.stringify(window.cardData));
             return t.modal({
-              url: 'https://conjoint-ly.github.io/trello-pivot/modal.html',
+              url: 'https://conjoint-ly.github.io/trello-pivot/modal.html?boardID='+board.id,
               args: {
                 boardID: board.id
               },
