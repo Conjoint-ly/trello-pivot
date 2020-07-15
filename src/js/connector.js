@@ -108,18 +108,17 @@ window.TrelloPowerUp.initialize({
                   "Labels": B.labels.map(A => A.name).join(", ")
                 };
                 B.customFieldItems.forEach(function(A) {
-                  var fieldType = board.customFields.filter(B => B.id == A.idCustomField)[0].type;
-                  var fieldName = board.customFields.filter(B => B.id == A.idCustomField)[0].name;
-                  if(fieldType=="number"){
-                    customMap[fieldName] = Number(A.value.number);
-                  }else if(fieldType=="text"){
-                    customMap[fieldName] = A.value.text;
-                  }else if(fieldType=="date"){
-                    customMap[fieldName] = A.value.date;
-                  }else if(fieldType=="checkbox"){
-                    customMap[fieldName] = 1*(A.value.checked=="true");
-                  }else if(fieldType=="list"){
-                    board.customFields.filter(B => B.id == A.idCustomField)[0].options.filter(D => D.id == A.idValue)[0].value.text;
+                  var field = board.customFields.filter(B => B.id == A.idCustomField)[0];
+                  if(field.type=="number"){
+                    customMap[field.name] = Number(A.value.number);
+                  }else if(field.type=="text"){
+                    customMap[field.name] = A.value.text;
+                  }else if(field.type=="date"){
+                    customMap[field.name] = A.value.date;
+                  }else if(field.type=="checkbox"){
+                    customMap[field.name] = 1*(A.value.checked=="true");
+                  }else if(field.type=="list"){
+                    customMap[field.name] = field.options.filter(D => D.id == A.idValue)[0].value.text;
                   }
                 });
                 return customMap;
