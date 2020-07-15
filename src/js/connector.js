@@ -107,24 +107,7 @@ const showInConsole = (members, customField, labels) => {
 
 window.TrelloPowerUp.initialize({
   'board-buttons': function() {
-    return [{
-        icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
-        text: 'Tally total hours',
-        callback: function(t) {
-          return t.board('all').then(async function(board) {
-            const labels = board.labels.filter(label => {
-              return label.name.trim() !== '' && config.labels.includes(label.name)
-            });
-            const lists = getListsFromRange(await t.lists('all'), config.range);
-            let cards = getCardsFromLists(await t.cards('all'), lists);
-            cards = applyLabelsForCards(cards, labels);
-            let members = board.members.filter(member => config.members.includes(member.username));
-            const customField = addIdForCustomField(config.customField, board.customFields)
-            members = applyCustomFieldCountForMembers(members, cards, customField);
-            showInConsole(members, customField, labels);
-          });
-        }
-      },
+    return [
       {
         icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
         text: 'Pivot table',
