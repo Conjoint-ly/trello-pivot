@@ -13,8 +13,8 @@ $(function() {
   }
   if (localStorage["pivotData" + $_GET["boardID"]] === undefined) {
     var pivotData = {
-      rows: ["List"],
-      cols: ["Members"],
+      rows: ["Members"],
+      cols: ["List index","List"],
       aggregatorName: "Count",
       rendererName: "Table"
     };
