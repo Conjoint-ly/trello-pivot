@@ -113,11 +113,11 @@ window.TrelloPowerUp.initialize({
                 return customMap;
               });
             }).flat(1);
-            localStorage.setItem('cardData', JSON.stringify(window.cardData));
+            localStorage.setItem('cardData'+ board.id, JSON.stringify(window.cardData));
             return t.modal({
               url: 'https://conjoint-ly.github.io/trello-pivot/modal.html',
               args: {
-                getVar1: 'getVal1'
+                boardID: board.id
               },
               accentColor: '#F2D600',
               fullscreen: true,
