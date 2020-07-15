@@ -7,7 +7,7 @@ $(window).load(function() {
       rendererName: "Table"
     };
   } else {
-    let pivotDataRaw  = await JSON.parse(localStorage.pivotData);
+    let pivotDataRaw  = JSON.parse(localStorage.pivotData);
     let pivotData = {
       rows: pivotDataRaw.rows,
       cols: pivotDataRaw.cols,
