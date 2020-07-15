@@ -122,6 +122,12 @@ window.TrelloPowerUp.initialize({
               accentColor: '#F2D600',
               fullscreen: true,
               callback: () => console.log('Pivot table closed.'),
+              actions: [{
+                icon: 'https://conjoint-ly.github.io/trello-pivot/conjointly.png',
+                url: 'https://conjointly.com/',
+                alt: 'Leftmost',
+                position: 'left',
+              }],
               title: 'Pivot Table (by Conjoint.ly)',
             });
           })
