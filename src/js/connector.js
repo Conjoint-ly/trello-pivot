@@ -108,7 +108,19 @@ window.TrelloPowerUp.initialize({
                   "Labels": B.labels.map(A => A.name).join(", ")
                 };
                 B.customFieldItems.forEach(function(A) {
-                  customMap[board.customFields.filter(B => B.id == A.idCustomField)[0].name] = Number(A.value.number)
+                  var fieldType = board.customFields.filter(B => B.id == A.idCustomField)[0].type;
+                  var fieldName = board.customFields.filter(B => B.id == A.idCustomField)[0].name;
+                  if(fieldType=="number"){
+                    customMap[fieldName] = Number(A.value.number);
+                  }else if(fieldType=="text"){
+                    customMap[fieldName] = A.value.text;
+                  }else if(fieldType=="date"){
+                    customMap[fieldName] = A.value.date;
+                  }else if(fieldType=="checkbox"){
+                    customMap[fieldName] = 1*(A.value.checked=="true");
+                  }else if(fieldType=="list"){
+                    board.customFields.filter(B => B.id == A.idCustomField)[0].options.filter(D => D.id == A.idValue)[0].value.text;
+                  }
                 });
                 return customMap;
               });
