@@ -21,6 +21,7 @@ $(function() {
   } else {
     var pivotData = JSON.parse(localStorage["pivotData" + $_GET["boardID"]]);
     delete pivotData.aggregators;
+    delete pivotData.renderers;
   }
   pivotData.onRefresh = function(config) {
     localStorage.setItem("pivotData" + $_GET["boardID"], JSON.stringify(config));
