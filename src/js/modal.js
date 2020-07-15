@@ -12,6 +12,7 @@ $(window).load(function() {
   pivotData.onRefresh = function(config) {
     localStorage.setItem("pivotData", JSON.stringify(config));
     $(".pvtTable").css("width", "");
+    $("table").css("width", "");
   };
 
   $("#output").pivotUI(JSON.parse(localStorage.cardData), pivotData);
