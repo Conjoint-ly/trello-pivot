@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(function() {
   if (localStorage.pivotData === undefined) {
     var pivotData = {
       rows: ["List"],
