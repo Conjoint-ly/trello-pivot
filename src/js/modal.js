@@ -9,7 +9,7 @@ $(window).load(function() {
   } else {
     let pivotData = JSON.parse(localStorage.cardData);
   }
-  settings.onRefresh = function(config) {
+  pivotData.onRefresh = function(config) {
     localStorage.setItem("pivotData", JSON.stringify(config));
     $(".pvtTable").css("width", "");
   };
