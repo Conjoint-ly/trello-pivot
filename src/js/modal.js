@@ -1,4 +1,4 @@
-(async function () {
+$(async function () {
     let t = window.TrelloPowerUp.iframe();
     let pivotData = await t.get('board', 'shared', 'pivotData');
 
@@ -27,4 +27,4 @@
 
     $('#output').pivotUI(cardData, pivotData);
     $('.pvtTable, table').css('width', 'auto');
-})();
+});
