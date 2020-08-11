@@ -1,32 +1,30 @@
-$(function() {
-  var $_GET = {};
-  if (document.location.toString().indexOf('?') !== -1) {
-    var query = document.location
-      .toString()
-      .replace(/^.*?\?/, '')
-      .replace(/#.*$/, '')
-      .split('&');
-    for (var i = 0, l = query.length; i < l; i++) {
-      var aux = decodeURIComponent(query[i]).split('=');
-      $_GET[aux[0]] = aux[1];
+(async function () {
+    let t = window.TrelloPowerUp.iframe();
+    let pivotData = await t.get('board', 'shared', 'pivotData');
+
+    if (!pivotData) {
+        pivotData = {
+            rows: ['Members'],
+            cols: ['List index', 'List'],
+            aggregatorName: 'Count',
+            rendererName: 'Table'
+        };
     }
-  }
-  if (localStorage["pivotData" + $_GET["boardID"]] === undefined) {
-    var pivotData = {
-      rows: ["Members"],
-      cols: ["List index","List"],
-      aggregatorName: "Count",
-      rendererName: "Table"
+
+    if (pivotData.hasOwnProperty('aggregators')) {
+        delete pivotData.aggregators;
+    }
+    if (pivotData.hasOwnProperty('renderers')) {
+        delete pivotData.renderers;
+    }
+
+    pivotData.onRefresh = async (pivotData) => {
+        await t.set('board', 'shared', 'pivotData', pivotData);
+        $('.pvtTable, table').css('width', 'auto');
     };
-  } else {
-    var pivotData = JSON.parse(localStorage["pivotData" + $_GET["boardID"]]);
-    delete pivotData.aggregators;
-    delete pivotData.renderers;
-  }
-  pivotData.onRefresh = function(config) {
-    localStorage.setItem("pivotData" + $_GET["boardID"], JSON.stringify(config));
-    $(".pvtTable, table").css("width", "auto");
-  };
-  $("#output").pivotUI(JSON.parse(localStorage['cardData' + $_GET["boardID"]]), pivotData);
-  $(".pvtTable, table").css("width", "auto");
-});
+
+    const cardData = await t.get('board', 'shared', 'cardData');
+
+    $('#output').pivotUI(cardData, pivotData);
+    $('.pvtTable, table').css('width', 'auto');
+})();

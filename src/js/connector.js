@@ -1,150 +1,62 @@
-/**
- * Converts string from .env to array
- * @param str
- * @returns {string[]}
- */
-const commasToArray = (str) => str.split(',').map(item => item.trim());
-
-
-/**
- * Filters lists by range
- * @param lists
- * @param range
- * @returns {Object[]}
- */
-const getListsFromRange = (lists, range) => {
-  const listsNames = lists.map(list => list.name);
-  const firstListIndex = listsNames.indexOf(range[0]);
-  const lastListIndex = listsNames.indexOf(range[1]);
-  return lists.slice(firstListIndex, lastListIndex + 1);
-}
-
-/**
- * Filters cards by lists
- * @param cards
- * @param lists
- * @returns {Object[]}
- */
-const getCardsFromLists = (cards, lists) => {
-  const listsIds = lists.map(list => list.id);
-  return cards.filter(card => listsIds.includes(card.idList));
-}
-
-/**
- * Filters cards by labels
- * @param cards
- * @param labels
- * @returns {Object[]}
- */
-const applyLabelsForCards = (cards, labels) => {
-  const labelsIds = labels.map(label => label.id);
-  return cards.filter(card => {
-    const cardLabelsIds = card.labels.map(label => label.id);
-    return cardLabelsIds.some(cardLabelsId => labelsIds.includes(cardLabelsId));
-  })
-};
-
-/**
- * Adds id for custom field
- * @param customField
- * @param customFieldItems
- * @returns {*}
- */
-const addIdForCustomField = (customField, customFieldItems) => {
-  const customFieldItem = customFieldItems
-    .filter(item => item.name === customField.label);
-  customField.id = customFieldItem[0].id;
-  return customField;
-}
-
-/**
- * Adds custom field as member's property
- * @param members
- * @param cards
- * @param customField
- * @returns {Object[]}
- */
-const applyCustomFieldCountForMembers = (members, cards, customField) => {
-  members.forEach(member => {
-    if (!member.hasOwnProperty(customField.name)) {
-      member[customField.name] = 0;
-    }
-    cards.forEach(card => {
-      const cardMembersIds = card.members.map(cardMember => cardMember.id);
-      if (cardMembersIds.includes(member.id)) {
-        member[customField.name] += card.customFieldItems
-          .filter(item => item.idCustomField === customField.id)
-          .reduce((a, b) => {
-            const aNumber = typeof a === 'number' ? a : Number(a.value.number);
-            const bNumber = typeof b === 'number' ? b : Number(b.value.number);
-            return aNumber + bNumber;
-          }, 0);
-      }
-    });
-  })
-  return members;
-}
-
-
 window.TrelloPowerUp.initialize({
-  'board-buttons': function() {
-    return [
-      {
-        icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
-        text: 'Pivot table',
-        callback: function(t) {
-          t.board('all').then(async function(board) {
-            let customFieldObject = board.customFields;
-            let listStore = await t.lists('all');
-            window.listStore = listStore;
-            window.customFieldObjectStore = customFieldObject;
-            window.cardData = listStore.map(function(C, listIndex) {
-              return C.cards.map(function(B) {
-                let customMap = {
-                  "Card ID": B.id,
-                  "Card Name": B.name,
-                  "List": C.name,
-                  "List index": listIndex+1,
-                  "Members": B.members.map(A => A.fullName).join(", "),
-                  "Labels": B.labels.map(A => A.name).join(", ")
-                };
-                B.customFieldItems.forEach(function(A) {
-                  var field = board.customFields.filter(B => B.id == A.idCustomField)[0];
-                  if(field.type=="number"){
-                    customMap[field.name] = Number(A.value.number);
-                  }else if(field.type=="text"){
-                    customMap[field.name] = A.value.text;
-                  }else if(field.type=="date"){
-                    customMap[field.name] = A.value.date;
-                  }else if(field.type=="checkbox"){
-                    customMap[field.name] = 1*(A.value.checked=="true");
-                  }else if(field.type=="list"){
-                    customMap[field.name] = field.options.filter(D => D.id == A.idValue)[0].value.text;
-                  }
-                });
-                return customMap;
-              });
-            }).flat(1);
-            localStorage.setItem('cardData'+ board.id, JSON.stringify(window.cardData));
-            return t.modal({
-              url: 'https://conjoint-ly.github.io/trello-pivot/modal.html?boardID='+board.id,
-              args: {
-                boardID: board.id
-              },
-              accentColor: '#000000',
-              fullscreen: true,
-              callback: () => console.log('Pivot table closed.'),
-              actions: [{
-                icon: 'https://conjoint-ly.github.io/trello-pivot/conjointly.png',
-                url: 'https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello',
-                alt: 'Check out Conjoint.ly',
-                position: 'left',
-              }],
-              title: 'Pivot Table (by Conjoint.ly)',
-            });
-          })
-        }
-      }
-    ];
-  },
+    'board-buttons': function () {
+        return [
+            {
+                icon: 'https://conjoint-ly.github.io/trello-pivot/logo.png',
+                text: 'Pivot table',
+                callback: function (t) {
+                    t.board('all').then(async function (board) {
+                        const listStore = await t.lists('all');
+                        window.cardData = listStore.map(function (listItem, listIndex) {
+                            return listItem.cards.map(function (cardItem) {
+                                const customMap = {
+                                    'Card ID': cardItem.id,
+                                    'Card Name': cardItem.name,
+                                    'List': listItem.name,
+                                    'List index': listIndex + 1,
+                                    'Members': cardItem.members.map(member => member.fullName).join(', '),
+                                    'Labels': cardItem.labels.map(label => label.name).join(', ')
+                                };
+                                cardItem.customFieldItems.forEach(function (customFieldItem) {
+                                    var field = board.customFields.filter(cardItem => cardItem.id === customFieldItem.idCustomField)[0];
+                                    if (field.type === 'number') {
+                                        customMap[field.name] = Number(customFieldItem.value.number);
+                                    } else if (field.type === "text") {
+                                        customMap[field.name] = customFieldItem.value.text;
+                                    } else if (field.type === "date") {
+                                        customMap[field.name] = customFieldItem.value.date;
+                                    } else if (field.type === "checkbox") {
+                                        customMap[field.name] = 1 * (customFieldItem.value.checked === true);
+                                    } else if (field.type === "list") {
+                                        customMap[field.name] = field.options
+                                            .filter(option => option.id === customFieldItem.idValue)[0].value.text;
+                                    }
+                                });
+                                return customMap;
+                            });
+                        }).flat(1);
+
+                        t.set('board', 'shared', 'cardData', window.cardData);
+
+                        return t.modal({
+                            url: 'https://conjoint-ly.github.io/trello-pivot/modal.html?boardID=' + board.id,
+                            args: {
+                                boardID: board.id
+                            },
+                            accentColor: '#000000',
+                            fullscreen: true,
+                            callback: () => console.log('Pivot table closed.'),
+                            actions: [{
+                                icon: 'https://conjoint-ly.github.io/trello-pivot/conjointly.png',
+                                url: 'https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello',
+                                alt: 'Check out Conjoint.ly',
+                                position: 'left',
+                            }],
+                            title: 'Pivot Table (by Conjoint.ly)',
+                        });
+                    })
+                }
+            }
+        ];
+    },
 });
