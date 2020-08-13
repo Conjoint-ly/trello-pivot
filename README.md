@@ -6,13 +6,13 @@ Pivot tables are the perfect solution when you need to summarise and analyse lar
 
 🆓 Free (no registration required)
 
-## Conjoint.ly Pivots are particularly useful for:
+## [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) Pivots are particularly useful for:
 
 * 🗓️ Project Planning (i.e., identify and categorise development hours)
 * 👀 Project Tracking (i.e., track project costs, group and sort project stages)
 * ✔️ Project Reporting (i.e., measure performance, create custom reports)
 
-## Main benefits of Conjoint.ly Pivots:
+## Main benefits of [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) Pivots:
 
 ### 😋 Simplicity
 
