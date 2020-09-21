@@ -41,5 +41,5 @@ This project is open source, and contributions are welcome. You can use [GitHub 
 
 It is an open-source project. Learn more about [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) and about the [project itself](https://github.com/Conjoint-ly/trello-pivot).
 
-🎤 Suggest more uses for this Pivot tool and provide your feedback at [support@conjointly.com](mailto:support@conjointly.com).
+🎤 Suggest more uses for this Pivot tool and provide your feedback at [support@conjointly.com](mailto:support@conjointly.com?subject=Trello-Powerup).
 
