@@ -1,1 +1,0 @@
-{"version":3,"sources":["../js/modal.js"],"names":["document","write","localStorage","cardData"],"mappings":";AAAAA,SAASC,MAAMC,aAAaC","file":"modal.4ecc43aa.js","sourceRoot":"../src/html","sourcesContent":["document.write(localStorage.cardData);\n"]}
