@@ -6,7 +6,7 @@ Pivot tables are the perfect solution when you need to summarise and analyse lar
 
 🆓 <b>Add for free (no registration required):</b>
 
-<center><a href="https://trello.com/power-ups/5d84733c6fd69f69b3d8ce95"><img src=add-to-trello.png></a></center>
+<p align=center><a href="https://trello.com/power-ups/5d84733c6fd69f69b3d8ce95" style="border-radius: 3px;    border: 0;    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;    background-color: #5aac44;    box-shadow: none;    border: none;    color: #fff;">Add to Trello</a></p>
 
 ## [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) Pivots are particularly useful for:
 
