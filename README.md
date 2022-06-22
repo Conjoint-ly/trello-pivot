@@ -1,6 +1,6 @@
 # Add pivot table functionality to Trello!
 
-The pivot table functionality power-up was developed by the [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) development team as a quick way to count to-do and completed cards, as well as tally total hours budgeted for cards.
+The pivot table functionality power-up was developed by the [Conjointly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) development team as a quick way to count to-do and completed cards, as well as tally total hours budgeted for cards.
 
 Pivot tables are the perfect solution when you need to summarise and analyse large amounts of data. In just a few clicks, you can review project efficiency and productivity data in a simple display.
 
@@ -16,13 +16,13 @@ Pivot tables are the perfect solution when you need to summarise and analyse lar
   />
 </a></p>
 
-## [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) Pivots are particularly useful for:
+## [Conjointly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) Pivots are particularly useful for:
 
 * 🗓️ Project Planning (i.e., identify and categorise development hours)
 * 👀 Project Tracking (i.e., track project costs, group and sort project stages)
 * ✔️ Project Reporting (i.e., measure performance, create custom reports)
 
-## Main benefits of [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) Pivots:
+## Main benefits of [Conjointly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) Pivots:
 
 ### 😋 Simplicity
 
@@ -49,7 +49,7 @@ Rearrange the pivot table to suit your needs for displaying board data. Group yo
 
 This project is open source, and contributions are welcome. You can use [GitHub issues](https://github.com/Conjoint-ly/trello-pivot/issues) to report issues or request features.
 
-It is an open-source project. Learn more about [Conjoint.ly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) and about the [project itself](https://github.com/Conjoint-ly/trello-pivot).
+It is an open-source project. Learn more about [Conjointly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) and about the [project itself](https://github.com/Conjoint-ly/trello-pivot).
 
 🎤 Suggest more uses for this Pivot tool and provide your feedback at [support@conjointly.com](mailto:support@conjointly.com?subject=Trello-Powerup).
 

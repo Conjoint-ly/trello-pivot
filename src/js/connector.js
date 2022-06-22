@@ -13,10 +13,10 @@ window.TrelloPowerUp.initialize({
                         actions: [{
                             icon: 'https://conjoint-ly.github.io/trello-pivot/conjointly.png',
                             url: 'https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello',
-                            alt: 'Check out Conjoint.ly',
+                            alt: 'Check out Conjointly',
                             position: 'left',
                         }],
-                        title: 'Pivot Table (by Conjoint.ly)',
+                        title: 'Pivot Table (by Conjointly)',
                     });
                 }
             }
