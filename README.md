@@ -1,4 +1,4 @@
-# Add pivot table functionality to Trello!
+# Add pivot table functionality to Trello! 
 
 The pivot table functionality power-up was developed by the [Conjointly](https://conjointly.com/?utm_campaign=trello-pivot-table&utm_medium=social&utm_source=trello-description) development team as a quick way to count to-do and completed cards, as well as tally total hours budgeted for cards.
 
