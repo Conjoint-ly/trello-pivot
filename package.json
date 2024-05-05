@@ -1,0 +1,29 @@
+{
+  "name": "trello-pivot",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "parcel ./src/html/*",
+    "build": "parcel build ./src/html/* --public-url ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Conjoint-ly/trello-pivot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Conjoint-ly/trello-pivot/issues"
+  },
+  "homepage": "https://github.com/Conjoint-ly/trello-pivot#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "parcel-bundler": "^1.12.4",
+    "node-forge": ">=0.10.0"
+  }
+}
