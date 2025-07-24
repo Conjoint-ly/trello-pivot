@@ -13,7 +13,13 @@
     <script src="https://p.trellocdn.com/power-up.min.js" crossorigin="anonymous"></script>
     <script src="../js/modal.js"></script>
 </head>
-<body>
+<body>    
+    <div id="xxxx" style="padding: 10px;color: red;padding-bottom: 20px; display: flex;flex-flow: inherit;">
+      <span style="float: left;">
+          <b>⚠️ Attention:</b> Something wrong is happening with Trello. Please read <a href="https://community.atlassian.com/t5/Trello-discussions/Would-love-to-have-markdown-editing/td-p/2603253" target="_blank">this complaint</a>, <a href="https://community.atlassian.com/t5/Trello-questions/Please-stop-making-unnecessary-changes-to-Trello/qaq-p/2688914#M92965" target="_blank">this complaint</a>, and <a href="https://www.reddit.com/r/trello/comments/1m83itk/open_letter_to_trello_leadership/" target="_blank">this complaint</a>. We are starting to look for alternatives to Trello.
+      </span> 
+      <button title="Close this notice" style="float: right;" onclick="document.querySelector( '#xxxx' ).remove();">✖</button>
+    </div>
     <div id="output"></div>
 </body>
 </html>
