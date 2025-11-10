@@ -8,46 +8,36 @@ const getCardData = async () => {
     const listStore = await iframe.lists('all');
     return listStore.map((listItem, listIndex) => {
         return listItem.cards.map(cardItem => {
-            const baseMap = {
+            const customMap = {
                 'Card ID': cardItem.id,
                 'Card Name': cardItem.name,
                 'List': listItem.name,
                 'List index': listIndex + 1,
-                'Members': cardItem.members.map(member => member.fullName).join(', ')
+                'Members': cardItem.members.map(member => member.fullName).join(', '),
+                'Labels': cardItem.labels.map(label => label.name).join(', ')
             };
-            
-            // Add custom fields to base map
             cardItem.customFieldItems.forEach(customFieldItem => {
                 var field = board.customFields.filter(cardItem => cardItem.id === customFieldItem.idCustomField)[0];
                 if (field.type === 'number') {
-                    baseMap[field.name] = Number(customFieldItem.value.number);
+                    customMap[field.name] = Number(customFieldItem.value.number);
                 } else if (field.type === "text") {
-                    baseMap[field.name] = customFieldItem.value.text;
+                    customMap[field.name] = customFieldItem.value.text;
                 } else if (field.type === "date") {
-                    baseMap[field.name] = customFieldItem.value.date;
+                    customMap[field.name] = customFieldItem.value.date;
                 } else if (field.type === "checkbox") {
-                    baseMap[field.name] = 1 * (customFieldItem.value.checked === true);
+                    customMap[field.name] = 1 * (customFieldItem.value.checked === true);
                 } else if (field.type === "list") {
-                    baseMap[field.name] = field.options
+                    customMap[field.name] = field.options
                         .filter(option => option.id === customFieldItem.idValue)[0].value.text;
                 }
             });
-            
-            // Create a separate row for each label
-            if (cardItem.labels.length > 0) {
-                return cardItem.labels.map(label => ({
-                    ...baseMap,
-                    'Labels': label.name
-                }));
-            } else {
-                // If no labels, create a single row with empty label
-                return [{
-                    ...baseMap,
-                    'Labels': ''
-                }];
-            }
+            // Add individual label fields
+            cardItem.labels.forEach(label => {
+                customMap[`Label ${label.name}`] = label.name;
+            });
+            return customMap;
         });
-    }).flat(2);
+    }).flat(1);
 };
 
 /**
