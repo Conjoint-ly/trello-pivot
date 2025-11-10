@@ -32,6 +32,10 @@ const getCardData = async () => {
                         .filter(option => option.id === customFieldItem.idValue)[0].value.text;
                 }
             });
+            // Add individual label fields
+            cardItem.labels.forEach(label => {
+                customMap[`Label ${label.name}`] = label.name;
+            });
             return customMap;
         });
     }).flat(1);
