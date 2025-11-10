@@ -14,7 +14,8 @@ const getCardData = async () => {
                 'List': listItem.name,
                 'List index': listIndex + 1,
                 'Members': cardItem.members.map(member => member.fullName).join(', '),
-                'Labels': cardItem.labels.map(label => label.name).join(', ')
+                'Labels': cardItem.labels.map(label => label.name).join(', '),
+                'Year Last Edited': cardItem.dateLastActivity ? new Date(cardItem.dateLastActivity).getFullYear() : null
             };
             cardItem.customFieldItems.forEach(customFieldItem => {
                 var field = board.customFields.filter(cardItem => cardItem.id === customFieldItem.idCustomField)[0];
